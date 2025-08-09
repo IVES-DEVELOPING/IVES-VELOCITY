@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Optimization Hub - Home</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #0d0d0d;
+        color: #fff;
+    }
+    header {
+        background: linear-gradient(90deg, #00ffcc, #0066ff);
+        padding: 20px;
+        text-align: center;
+    }
+    nav {
+        background-color: #1a1a1a;
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+    }
+    nav a {
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 20px;
+        margin: 0 10px;
+        background-color: #00ffcc;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+    nav a:hover {
+        background-color: #0066ff;
+    }
+    main {
+        max-width: 1000px;
+        margin: auto;
+        padding: 20px;
+    }
+    section {
+        background-color: #1a1a1a;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0,255,204,0.2);
+    }
+    h2 {
+        color: #00ffcc;
+    }
+    .feedback {
+        background-color: #0f0f0f;
+        padding: 15px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        border-left: 4px solid #00ffcc;
+    }
+    .review-form input, .review-form textarea, .review-form button {
+        width: 100%;
+        padding: 10px;
+        margin-top: 8px;
+        border-radius: 5px;
+        border: none;
+        font-size: 14px;
+    }
+    .review-form input, .review-form textarea {
+        background-color: #1a1a1a;
+        color: #fff;
+    }
+    .review-form button {
+        background-color: #00ffcc;
+        color: #000;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .review-form button:hover {
+        background-color: #0066ff;
+        color: #fff;
+    }
+</style>
+<script>
+    // Redirect if not logged in
+    if (!localStorage.getItem("loggedIn")) {
+        window.location.href = "login.html";
+    }
+
+    function loadReviews() {
+        let reviews = JSON.parse(localStorage.getItem("reviews")) || [
+            {name: "Rahul K.", text: "My PC boot time dropped from 2 minutes to just 20 seconds!"},
+            {name: "Priya S.", text: "The guides are easy to follow and actually work. 10/10!"},
+            {name: "Arjun M.", text: "I boosted my game FPS by 30% using the provided scripts!"}
+        ];
+        let reviewContainer = document.getElementById("reviews");
+        reviewContainer.innerHTML = "";
+        reviews.forEach(r => {
+            let div = document.createElement("div");
+            div.className = "feedback";
+            div.innerHTML = `<strong>${r.name}</strong><br>${r.text}`;
+            reviewContainer.appendChild(div);
+        });
+    }
+
+    function addReview() {
+        let name = document.getElementById("reviewName").value.trim();
+        let text = document.getElementById("reviewText").value.trim();
+        if(name && text) {
+            let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
+            reviews.push({name: name, text: text});
+            localStorage.setItem("reviews", JSON.stringify(reviews));
+            document.getElementById("reviewName").value = "";
+            document.getElementById("reviewText").value = "";
+            loadReviews();
+        } else {
+            alert("Please enter your name and review.");
+        }
+    }
+
+    window.onload = loadReviews;
+</script>
+</head>
+<body>
+
+<header>
+    <h1>Optimization Hub</h1>
+    <p>Your one-stop solution for PC performance boosting</p>
+</header>
+
+<nav>
+    <a href="downloads.html" target="_blank">Downloads</a>
+    <a href="guides.html" target="_blank">Guides</a>
+    <a href="tools.html" target="_blank">Tools</a>
+    <a href="scripts.html" target="_blank">Scripts</a>
+</nav>
+
+<main>
+    <section>
+        <h2>Welcome!</h2>
+        <p>Here at Optimization Hub, we bring you the best guides, tools, and scripts to make your PC faster and more efficient. Whether you are a gamer or a casual user, our resources will help you get the most out of your system.</p>
+    </section>
+
+    <section>
+        <h2>Key Features</h2>
+        <ul>
+            <li>12+ downloadable optimization software</li>
+            <li>Step-by-step PC optimization guides</li>
+            <li>Ready-to-use tools for cleaning & boosting</li>
+            <li>Pre-made scripts to automate optimization</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Optimization Notes</h2>
+        <p>💡 Always create a restore point before applying registry tweaks.<br>
+        💡 Run cleanup scripts regularly to keep your system in top shape.<br>
+        💡 Disable unnecessary startup apps for faster boot times.</p>
+    </section>
+
+    <section>
+        <h2>Happy Customers</h2>
+        <div id="reviews"></div>
+        <div class="review-form">
+            <h3>Leave a Review</h3>
+            <input type="text" id="reviewName" placeholder="Your name">
+            <textarea id="reviewText" rows="3" placeholder="Your feedback..."></textarea>
+            <button onclick="addReview()">Submit Review</button>
+        </div>
+    </section>
+</main>
+
+</body>
+</html>

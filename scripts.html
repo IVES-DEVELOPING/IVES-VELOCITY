@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimization Scripts - Velocity</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #1e293b;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.5em;
+        }
+        main {
+            padding: 20px;
+        }
+        .script-box {
+            background: #1e293b;
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        h2 {
+            color: #00ffcc;
+        }
+        button {
+            background: #00ffcc;
+            color: #000;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #00ccaa;
+        }
+    </style>
+</head>
+<body>
+
+<header>Optimization Scripts - Velocity</header>
+
+<main>
+    <h2>Batch Scripts (.bat)</h2>
+
+    <div class="script-box">
+        <h3>Clear Temp Files</h3>
+        <p>Removes all temporary files to free up space and improve speed.</p>
+        <button onclick="window.open('scripts/clear_temp.bat', '_blank')">Preview</button>
+        <button onclick="downloadFile('scripts/clear_temp.bat')">Download</button>
+    </div>
+
+    <div class="script-box">
+        <h3>Flush DNS</h3>
+        <p>Resets DNS cache to improve network performance.</p>
+        <button onclick="window.open('scripts/flush_dns.bat', '_blank')">Preview</button>
+        <button onclick="downloadFile('scripts/flush_dns.bat')">Download</button>
+    </div>
+
+    <div class="script-box">
+        <h3>Disable Startup Programs</h3>
+        <p>Turns off unnecessary startup programs to boost boot time.</p>
+        <button onclick="window.open('scripts/disable_startup.bat', '_blank')">Preview</button>
+        <button onclick="downloadFile('scripts/disable_startup.bat')">Download</button>
+    </div>
+
+    <h2>PowerShell Scripts (.ps1)</h2>
+
+    <div class="script-box">
+        <h3>Remove Bloatware</h3>
+        <p>Uninstalls unnecessary Windows apps to improve speed.</p>
+        <button onclick="window.open('scripts/remove_bloatware.ps1', '_blank')">Preview</button>
+        <button onclick="downloadFile('scripts/remove_bloatware.ps1')">Download</button>
+    </div>
+
+    <div class="script-box">
+        <h3>Optimize Network</h3>
+        <p>Boosts network settings for faster speeds and lower ping.</p>
+        <button onclick="window.open('scripts/optimize_network.ps1', '_blank')">Preview</button>
+        <button onclick="downloadFile('scripts/optimize_network.ps1')">Download</button>
+    </div>
+
+    <div class="script-box">
+        <h3>Performance Tweaks</h3>
+        <p>Adjusts Windows for maximum performance in gaming.</p>
+        <button onclick="window.open('scripts/performance_tweaks.ps1', '_blank')">Preview</button>
+        <button onclick="downloadFile('scripts/performance_tweaks.ps1')">Download</button>
+    </div>
+
+</main>
+
+<script>
+function downloadFile(filePath) {
+    const link = document.createElement('a');
+    link.href = filePath;
+    link.download = filePath.split('/').pop();
+    link.click();
+}
+</script>
+
+</body>
+</html>
